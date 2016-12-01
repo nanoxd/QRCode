@@ -22,25 +22,25 @@ class QRCodeTests: XCTestCase {
     }
     
     func testInitWithData() {
-        let data = "hello".dataUsingEncoding(NSISOLatin1StringEncoding)!
-        var qrCode = QRCode(data)
+        let data = "hello".data(using: String.Encoding.isoLatin1)!
+        let qrCode = QRCode(data)
         
         XCTAssertEqual(data, qrCode.data, "data is not equal")
     }
     
     func testInitWithString() {
         let string = "hello"
-        let data = string.dataUsingEncoding(NSISOLatin1StringEncoding)!
-        var qrCode = QRCode(string)
+        let data = string.data(using: String.Encoding.isoLatin1)!
+        let qrCode = QRCode(string)
         
         XCTAssert(qrCode != nil, "QRCode is nil")
         XCTAssertEqual(data, qrCode!.data, "data is not equal")
     }
 
     func testInitWithURL() {
-        let url = NSURL(string: "http://example.com")!
-        let data = url.absoluteString!.dataUsingEncoding(NSISOLatin1StringEncoding)!
-        var qrCode = QRCode(url)
+        let url = URL(string: "http://example.com")!
+        let data = url.absoluteString.data(using: String.Encoding.isoLatin1)!
+        let qrCode = QRCode(url)
         
         XCTAssert(qrCode != nil, "QRCode is nil")
         XCTAssertEqual(data, qrCode!.data, "data is not equal")
